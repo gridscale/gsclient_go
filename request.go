@@ -197,6 +197,9 @@ func (r *gsRequest) retryHTTPRequest(ctx context.Context, cfg *Config) (string, 
 	var responseBodyBytes []byte
 	err := retryNTimes(func() (bool, error) {
 		httpReq, err := r.prepareHTTPRequest(ctx, cfg)
+		if err != nil {
+			return false, err
+		}
 		logger.Debugf("Request body: %v", httpReq.Body)
 		logger.Debugf("Request headers: %v", maskHeaderCred(httpReq.Header))
 		resp, err := cfg.httpClient.Do(httpReq)
