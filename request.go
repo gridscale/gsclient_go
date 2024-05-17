@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net"
 	"net/http"
 	"runtime"
@@ -224,7 +224,7 @@ func (r *gsRequest) retryHTTPRequest(ctx context.Context, cfg *Config) (string, 
 
 		statusCode := resp.StatusCode
 		requestUUID = resp.Header.Get(requestUUIDHeader)
-		responseBodyBytes, err = ioutil.ReadAll(resp.Body)
+		responseBodyBytes, err = io.ReadAll(resp.Body)
 		if err != nil {
 			logger.Errorf("Error while reading the response's body: %v", err)
 			return false, err
