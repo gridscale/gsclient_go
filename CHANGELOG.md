@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.15.0 (Sep 18, 2024)
+
+FEATURES:
+- Allow nested schema in parameter schema of paas service template [#236](https://github.com/gridscale/gsclient-go/pull/236).
+
 ## 3.14.2 (May 17, 2024)
 
 BUG FIXES:
